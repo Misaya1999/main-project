@@ -1,11 +1,9 @@
 import { Link } from "react-router-dom";
 
 function Blog() {
-  return (
-    <div className="container">
-        <div className="row">
-            <div className="blog-post-area">
-                <h2 className="title text-center">Latest From our Blog</h2>
+    return (
+        <div className="blog-post-area">
+            <h2 className="title text-center">Latest From our Blog</h2>
             <div className="single-blog-post">
                 <h3>Girls Pink T Shirt arrived in store</h3>
                 <div className="post-meta">
@@ -26,7 +24,7 @@ function Blog() {
                     <img src="frontend/images/blog/blog-one.jpg" alt="" />
                 </a>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                <a className="btn btn-primary" href="#">Read More</a>
+                <Link className="btn btn-primary" to="/blog/detail/1">Read More</Link>
             </div>
             <div className="single-blog-post">
                 <h3>Girls Pink T Shirt arrived in store</h3>
@@ -48,7 +46,7 @@ function Blog() {
                     <img src="frontend/images/blog/blog-two.jpg" alt="" />
                 </a>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                <a className="btn btn-primary" href="#">Read More</a>
+                <Link className="btn btn-primary" to="/blog/detail/2">Read More</Link>
             </div>
             <div className="single-blog-post">
                 <h3>Girls Pink T Shirt arrived in store</h3>
@@ -70,7 +68,7 @@ function Blog() {
                     <img src="frontend/images/blog/blog-three.jpg" alt="" />
                 </a>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                <a className="btn btn-primary" href="#">Read More</a>
+                <Link className="btn btn-primary" to="/blog/detail/3">Read More</Link>
             </div>
             <div className="pagination-area">
                 <ul className="pagination">
@@ -80,9 +78,7 @@ function Blog() {
                 <li><a href="#"><i className="fa fa-angle-double-right" /></a></li>
                 </ul>
             </div>
-            </div>
         </div>
-    </div>
   );
 }
 

@@ -2,8 +2,8 @@ function LeftSidebar(){
     return(
         <>
         <section>
-            <div className="container">
-                <div className="row">
+            <div className="left-sidebar">
+                <div className="container">
                     <div className="col-sm-3">
                         <div className="left-sidebar">
                             <h2>Category</h2>
