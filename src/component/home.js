@@ -2,7 +2,9 @@ function Home(){
     return(
         <>
         <div>
-           <p style={{ backgroundColor: "red" }}>abc</p>
+           <h1 style={{ backgroundColor: "red" }}>HOME</h1>
+           <h1 style={{ backgroundColor: "blue" }}>HOME</h1>
+           <h1 style={{ backgroundColor: "green" }}>HOME</h1>
         </div>
         </>
     )

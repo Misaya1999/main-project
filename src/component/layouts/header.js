@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Header(){
     return(
         <>
@@ -32,7 +34,7 @@ function Header(){
                     <div className="row">
                         <div className="col-md-4 clearfix">
                             <div className="logo pull-left">
-                                <a href="index.html"><img src="images/home/logo.png" alt="" /></a>
+                                <a href="index.html"><img src="frontend/images/home/logo.png" alt="" /></a>
                             </div>
                             <div className="btn-group pull-right clearfix">
                                 <div className="btn-group">
@@ -62,9 +64,9 @@ function Header(){
                                 <ul className="nav navbar-nav">
                                     <li><a href><i className="fa fa-user" /> Account</a></li>
                                     <li><a href><i className="fa fa-star" /> Wishlist</a></li>
-                                    <li><a href="checkout.html"><i className="fa fa-crosshairs" /> Checkout</a></li>
-                                    <li><a href="cart.html"><i className="fa fa-shopping-cart" /> Cart</a></li>
-                                    <li><a href="login.html"><i className="fa fa-lock" /> Login</a></li>
+                                    <li><Link to="/checkout"><i className="fa fa-crosshairs" /> Checkout</Link></li>
+                                    <li><Link to="/cart"><i className="fa fa-shopping-cart" /> Cart</Link></li>
+                                    <li><Link to="/login"><i className="fa fa-lock" /> Login</Link></li>
                                 </ul>
                             </div>
                         </div>
@@ -95,10 +97,10 @@ function Header(){
                                         <li><a href="login.html">Login</a></li> 
                                     </ul>
                                     </li> 
-                                    <li className="dropdown"><a href="#" className="active">Blog<i className="fa fa-angle-down" /></a>
+                                    <li className="dropdown"><Link to="/blog">Blog<i className="fa fa-angle-down" /></Link>
                                     <ul role="menu" className="sub-menu">
-                                        <li><a href="blog.html" className="active">Blog List</a></li>
-                                        <li><a href="blog-single.html">Blog Single</a></li>
+                                        <li><a href="/blog" className="active">Blog List</a></li>
+                                        <li><a href="#">Blog Single</a></li>
                                     </ul>
                                     </li> 
                                     <li><a href="404.html">404</a></li>

@@ -134,7 +134,7 @@ function LeftSidebar(){
                                 </div>
                             </div>
                             <div className="shipping text-center">
-                                <img src="images/home/shipping.jpg" alt="" />
+                                <img src="frontend/images/home/shipping.jpg" alt="" />
                             </div>
                         </div>
                     </div>
