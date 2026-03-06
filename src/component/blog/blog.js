@@ -4,12 +4,12 @@ import API from "../../api";
 
 function Blog() {
 
-    const [getItem, setItem] = useState ([]);
+    const [blog, setBlog] = useState ([]);
 
     useEffect(() => {
         API.get('/blog')
         .then(response => {
-            setItem(response.data.blog)
+            setBlog(response.data.blog.data)
         })
         .catch(function (error) {
             console.log(error)
@@ -19,80 +19,30 @@ function Blog() {
     return (
         <div className="blog-post-area">
             <h2 className="title text-center">Latest From our Blog</h2>
-            <div className="single-blog-post">
-                <h3>Girls Pink T Shirt arrived in store</h3>
-                <div className="post-meta">
-                    <ul>
-                        <li><i className="fa fa-user" /> Mac Doe</li>
-                        <li><i className="fa fa-clock-o" /> 1:33 pm</li>
-                        <li><i className="fa fa-calendar" /> DEC 5, 2013</li>
-                    </ul>
-                    <span>
-                        <i className="fa fa-star" />
-                        <i className="fa fa-star" />
-                        <i className="fa fa-star" />
-                        <i className="fa fa-star" />
-                        <i className="fa fa-star-half-o" />
-                    </span>
+            
+            {blog.map((item) => (
+                <div className="single-blog-post" key={item.id}>
+                    <h3>{item.title}</h3>
+                    <div className="post-meta">
+                        <ul>
+                            <li><i className="fa fa-user"></i> Author {item.id_auth}</li>
+                            <li>
+                                <i className="fa fa-clock-o"></i>
+                                {new Date(item.updated_at).toLocaleTimeString()}
+                            </li>
+                            <li>
+                                <i className="fa fa-calendar"></i>
+                                {new Date(item.updated_at).toLocaleDateString()}
+                            </li>
+                        </ul>
+                    </div>
+                    <a><img src={"http://localhost/laravel8/public/upload/blog/image/" + item.image} alt="" /></a>
+                    <p>{item.description}</p>
+                    <Link className="btn btn-primary" to={`/blog/detail/${item.id}`}>Read More</Link>
                 </div>
-                <a href>
-                    <img src="frontend/images/blog/blog-one.jpg" alt="" />
-                </a>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                <Link className="btn btn-primary" to="/blog/detail/1">Read More</Link>
-            </div>
-            <div className="single-blog-post">
-                <h3>Girls Pink T Shirt arrived in store</h3>
-                <div className="post-meta">
-                    <ul>
-                        <li><i className="fa fa-user" /> Mac Doe</li>
-                        <li><i className="fa fa-clock-o" /> 1:33 pm</li>
-                        <li><i className="fa fa-calendar" /> DEC 5, 2013</li>
-                    </ul>
-                    <span>
-                        <i className="fa fa-star" />
-                        <i className="fa fa-star" />
-                        <i className="fa fa-star" />
-                        <i className="fa fa-star" />
-                        <i className="fa fa-star-half-o" />
-                    </span>
-                </div>
-                <a href>
-                    <img src="frontend/images/blog/blog-two.jpg" alt="" />
-                </a>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                <Link className="btn btn-primary" to="/blog/detail/2">Read More</Link>
-            </div>
-            <div className="single-blog-post">
-                <h3>Girls Pink T Shirt arrived in store</h3>
-                <div className="post-meta">
-                    <ul>
-                        <li><i className="fa fa-user" /> Mac Doe</li>
-                        <li><i className="fa fa-clock-o" /> 1:33 pm</li>
-                        <li><i className="fa fa-calendar" /> DEC 5, 2013</li>
-                    </ul>
-                    <span>
-                        <i className="fa fa-star" />
-                        <i className="fa fa-star" />
-                        <i className="fa fa-star" />
-                        <i className="fa fa-star" />
-                        <i className="fa fa-star-half-o" />
-                    </span>
-                </div>
-                <a href>
-                    <img src="frontend/images/blog/blog-three.jpg" alt="" />
-                </a>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                <Link className="btn btn-primary" to="/blog/detail/3">Read More</Link>
-            </div>
-            <div className="pagination-area">
-                <ul className="pagination">
-                <li><a href="#" className="active">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#"><i className="fa fa-angle-double-right" /></a></li>
-                </ul>
-            </div>
+
+            ))}
+
         </div>
     );
 }
