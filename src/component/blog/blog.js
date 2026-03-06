@@ -1,6 +1,21 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import API from "../../api";
 
 function Blog() {
+
+    const [getItem, setItem] = useState ([]);
+
+    useEffect(() => {
+        API.get('/blog')
+        .then(response => {
+            setItem(response.data.blog)
+        })
+        .catch(function (error) {
+            console.log(error)
+        })
+    }, [])
+
     return (
         <div className="blog-post-area">
             <h2 className="title text-center">Latest From our Blog</h2>
@@ -79,7 +94,7 @@ function Blog() {
                 </ul>
             </div>
         </div>
-  );
+    );
 }
 
 export default Blog;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useLocation, useNavigate} from "react-router-dom";
-import API from "https://localhost/laravel/public/api/";
+import API from "../../api";
 
 function BlogDetail(){
     let params = useParams();
@@ -19,6 +19,21 @@ function BlogDetail(){
             console.log(error)
         })
     }, [])
+
+    return (
+        <div>
+            <h2>Blog Detail</h2>
+
+            <h3>{data?.title}</h3>
+            <p>{data?.description}</p>
+
+            <h4>Comments</h4>
+
+            {comment.map((item, index) => (
+                <p key={index}>{item.comment}</p>
+            ))}
+        </div>
+    )
 }
 
 export default BlogDetail;
