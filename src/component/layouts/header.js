@@ -66,7 +66,7 @@ function Header(){
                                     <li><a href><i className="fa fa-star" /> Wishlist</a></li>
                                     <li><Link to="/checkout"><i className="fa fa-crosshairs" /> Checkout</Link></li>
                                     <li><Link to="/cart"><i className="fa fa-shopping-cart" /> Cart</Link></li>
-                                    <li><Link to="/login"><i className="fa fa-lock" /> Login</Link></li>
+                                    <li><Link to="/member/login-register"><i className="fa fa-lock" /> Login</Link></li>
                                 </ul>
                             </div>
                         </div>

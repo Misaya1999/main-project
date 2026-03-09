@@ -1,9 +1,8 @@
 import Header from './component/layouts/header';
 import Footer from './component/layouts/footer';
-import LeftSidebar from './component/layouts/left-sidebar';
 import { Outlet } from "react-router-dom";
 
-function App(props) {
+function App2(props) {
     return (
         <>
             <Header/>
@@ -11,12 +10,7 @@ function App(props) {
             <section>
                 <div className="container">
                     <div className="row">
-                        <div className="col-sm-3">
-                            <LeftSidebar />
-                        </div>
-                        <div className="col-sm-9">
-                            <Outlet />
-                        </div>
+                        <Outlet />
                     </div>
                 </div>
             </section>
@@ -26,4 +20,4 @@ function App(props) {
     );
 }
 
-export default App;
+export default App2;
