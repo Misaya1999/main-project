@@ -9,7 +9,7 @@ import App2 from './App2';
 import Home from './component/home';
 import Blog from './component/blog/blog';
 import BlogDetail from './component/blog/blog-detail';
-import Login from './component/member/login';
+
 import Index from './component/member';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
