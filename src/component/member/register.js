@@ -28,7 +28,7 @@ function Register() {
     }
 
     function handleFile(e){
-z
+
         const fileUpload = e.target.files[0]
 
         if(fileUpload){
@@ -92,44 +92,57 @@ z
         if(Object.keys(errorSubmit).length > 0){
             setErrors(errorSubmit)
         }else{
-            alert("Đăng ký thành công")
+            const data = {
+                name: inputs.name,
+                email: inputs.email,
+                password: inputs.password,
+                phone: inputs.phone,
+                address: inputs.address,
+                avatar: inputs.avatar,
+                level: 0
+            }
+            console.log("User data", data)
+
+            API.post("register", data)
+            .then(res => {
+
+                console.log("RESPONSE:", res)
+
+                if(res.data.errors){
+                    setErrors(res.data.errors)
+                } else {
+                    alert("Đăng ký thành công")
+                }
+
+            })
+            .catch(err => console.log("ERROR:", err))
         }
     }
 
     return (
-        <div className="Login">
-            <section id="form">
-                <div className="container">
-                    <div className="row"> 
-                        <div className="col-sm-4">
-                            <div className="signup-form">
-                                <h2>New User Signup!</h2>
-                                <form onSubmit={checkForm}>
-                                    <input type="text" name="name" onChange={handleInput} />
-                                    <p>{errors.name}</p>
+        <div className="signup-form">
+            <h2>New User Signup!</h2>
+            <form onSubmit={checkForm}>
+                <input type="text" name="name" placeholder="User Name" onChange={handleInput} />
+                <p style={{color:"red"}}>{errors.name}</p>
 
-                                    <input type="email" name="email" onChange={handleInput} />
-                                    <p>{errors.email}</p>
+                <input type="email" name="email" placeholder="Email Address" onChange={handleInput} />
+                <p style={{color:"red"}}>{errors.email}</p>
 
-                                    <input type="password" name="password" onChange={handleInput} />
-                                    <p>{errors.password}</p>
+                <input type="password" name="password"placeholder="Password" onChange={handleInput} />
+                <p style={{color:"red"}}>{errors.password}</p>
 
-                                    <input type="text" name="phone" onChange={handleInput} />
-                                    <p>{errors.phone}</p>
+                <input type="text" name="phone"placeholder="Phone" onChange={handleInput} />
+                <p style={{color:"red"}}>{errors.phone}</p>
 
-                                    <input type="text" name="address" onChange={handleInput} />
-                                    <p>{errors.address}</p>
+                <input type="text" name="address"placeholder="Address" onChange={handleInput} />
+                <p style={{color:"red"}}>{errors.address}</p>
 
-                                    <input type="file" name="avatar" onChange={handleFile} />
-                                    <p>{errors.avatar}</p>
+                <input type="file" name="avatar" onChange={handleFile} />
+                <p style={{color:"red"}}>{errors.avatar}</p>
 
-                                    <button type="submit" className="btn btn-default">Signup</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                <button type="submit" className="btn btn-default">Signup</button>
+            </form>
         </div>
     );
 }

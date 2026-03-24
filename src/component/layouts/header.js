@@ -5,7 +5,12 @@ function Header(){
 
     const navigate = useNavigate()
     const isLogin = localStorage.getItem("token")
-    const user = JSON.parse(localStorage.getItem("auth"))
+
+    let user = {}
+    const auth = localStorage.getItem("auth")
+    if(auth){
+        user = JSON.parse(auth)
+    }
 
     function handleLogout(){
         localStorage.clear()

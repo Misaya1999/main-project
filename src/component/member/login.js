@@ -56,14 +56,20 @@ function Login() {
                     setErrors(res.data.errors)
                 } else {
 
+                    console.log("LOGIN RESPONSE:", res.data)
+
                     // lưu token + user
-                    localStorage.setItem("token", res.data.token)
-                    localStorage.setItem("auth", JSON.stringify(res.data.auth))
+                    if(res.data.token && res.data.Auth){
+                        localStorage.setItem("token", res.data.token)
+                        localStorage.setItem("auth", JSON.stringify(res.data.Auth))
+                    
 
                     // chuyển trang
                     navigate("/")
+                    } else {
+                        alert("Login thành công nhưng API không trả auth")
+                    }
                 }
-
             })
             .catch(err => console.log(err))
         }
@@ -77,27 +83,23 @@ function Login() {
     }, [])
 
     return (
-        <div className="Login">
-            <div className="col-sm-4 col-sm-offset-4">
-                <div className="login-form">
-                    <h2>Login to your account</h2>
-                    <form onSubmit={handleSubmit}>
-                        
-                        <input type="email" name="email" placeholder="Email Address" onChange={handleInput}/>
-                        <p style={{color:"red"}}>{errors.email}</p>
-                        <input type="password" name="password"placeholder="Password"onChange={handleInput}/>
-                        <p style={{color:"red"}}>{errors.password}</p>
-                        
-                        <span>
-                            <input type="checkbox" className="checkbox" /> 
-                            Keep me signed in
-                        </span>
-                        <div style={{display: 'flex', gap: '10px'}}>
-                            <button type="submit" className="btn btn-default">Login</button>
-                        </div>
-                    </form>
+        <div className="login-form">
+            <h2>Login to your account</h2>
+            <form onSubmit={handleSubmit}>
+                
+                <input type="email" name="email" placeholder="Email Address" onChange={handleInput}/>
+                <p style={{color:"red"}}>{errors.email}</p>
+                <input type="password" name="password"placeholder="Password"onChange={handleInput}/>
+                <p style={{color:"red"}}>{errors.password}</p>
+                
+                <span>
+                    <input type="checkbox" className="checkbox" /> 
+                    Keep me signed in
+                </span>
+                <div style={{display: 'flex', gap: '10px'}}>
+                    <button type="submit" className="btn btn-default">Login</button>
                 </div>
-            </div>
+            </form>
         </div>
     );
 }
