@@ -1,6 +1,17 @@
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
 
 function Header(){
+
+    const navigate = useNavigate()
+    const isLogin = localStorage.getItem("token")
+    const user = JSON.parse(localStorage.getItem("auth"))
+
+    function handleLogout(){
+        localStorage.clear()
+        navigate("/member/login-register")
+    }
+
     return(
         <>
         <header id="header">
@@ -62,11 +73,30 @@ function Header(){
                         <div className="col-md-8 clearfix">
                             <div className="shop-menu clearfix pull-right">
                                 <ul className="nav navbar-nav">
-                                    <li><a href><i className="fa fa-user" /> Account</a></li>
+                                    {isLogin && (<li><span>Hello {user?.name}</span></li>)}
                                     <li><a href><i className="fa fa-star" /> Wishlist</a></li>
                                     <li><Link to="/checkout"><i className="fa fa-crosshairs" /> Checkout</Link></li>
                                     <li><Link to="/cart"><i className="fa fa-shopping-cart" /> Cart</Link></li>
-                                    <li><Link to="/member/login-register"><i className="fa fa-lock" /> Login</Link></li>
+                                    {isLogin ? (
+                                        <>
+                                            <li>
+                                                <Link to="/account">
+                                                    <i className="fa fa-user" /> Account
+                                                </Link>
+                                            </li>
+                                            <li>
+                                                <a href="#" onClick={handleLogout}>
+                                                    <i className="fa fa-lock" /> Logout
+                                                </a>
+                                            </li>
+                                        </>
+                                    ) : (
+                                        <li>
+                                            <Link to="/member/login-register">
+                                                <i className="fa fa-lock" /> Login
+                                            </Link>
+                                        </li>
+                                    )}
                                 </ul>
                             </div>
                         </div>
