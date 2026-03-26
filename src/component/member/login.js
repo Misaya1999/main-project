@@ -66,9 +66,7 @@ function Login() {
 
                     // chuyển trang
                     navigate("/")
-                    } else {
-                        alert("Login thành công nhưng API không trả auth")
-                    }
+                    } 
                 }
             })
             .catch(err => console.log(err))
