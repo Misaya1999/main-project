@@ -27,19 +27,19 @@ function Login() {
         e.preventDefault()
 
         let errorSubmit = {}
-        let flag = true
+        let xx = true
 
         if(inputs.email === ""){
             errorSubmit.email = "Vui lòng nhập email"
-            flag = false
+            xx = false
         }
 
         if(inputs.password === ""){
             errorSubmit.password = "Vui lòng nhập password"
-            flag = false
+            xx = false
         }
 
-        if(!flag){
+        if(!xx){
             setErrors(errorSubmit)
         } else {
 

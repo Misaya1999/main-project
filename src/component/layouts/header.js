@@ -78,7 +78,6 @@ function Header(){
                         <div className="col-md-8 clearfix">
                             <div className="shop-menu clearfix pull-right">
                                 <ul className="nav navbar-nav">
-                                    {isLogin && (<li><span>Hello {user?.name}</span></li>)}
                                     <li><a href><i className="fa fa-star" /> Wishlist</a></li>
                                     <li><Link to="/checkout"><i className="fa fa-crosshairs" /> Checkout</Link></li>
                                     <li><Link to="/cart"><i className="fa fa-shopping-cart" /> Cart</Link></li>

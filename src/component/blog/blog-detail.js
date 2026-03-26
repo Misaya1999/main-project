@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useLocation, useNavigate} from "react-router-dom";
 import API from "../../api";
+import Comment from "./comment";
 
 function BlogDetail(){
     let params = useParams();
@@ -21,6 +22,7 @@ function BlogDetail(){
     }, [])
 
     return (
+        <>
         <div className="blog-post-area">
             <div className="single-blog-post">
                 <h2>{data.title}</h2>
@@ -47,6 +49,46 @@ function BlogDetail(){
                 ))}
             </div>
         </div>
+
+        <div className="rating-area">
+            <ul className="ratings">
+                <li className="rate-this">Rate this item:</li>
+                <li>
+                    <i className="fa fa-star color" />
+                    <i className="fa fa-star color" />
+                    <i className="fa fa-star color" />
+                    <i className="fa fa-star" />
+                    <i className="fa fa-star" />
+                </li>
+                <li className="color">(6 votes)</li>
+            </ul>
+            <ul className="tag">
+                <li>TAG:</li>
+                <li><a className="color" href>Pink <span>/</span></a></li>
+                <li><a className="color" href>T-Shirt <span>/</span></a></li>
+                <li><a className="color" href>Girls</a></li>
+            </ul>
+        </div>
+
+        <div className="socials-share">
+            <a href><img src="images/blog/socials.png" alt="" /></a>
+        </div>
+
+        <div className="response-area">
+            <h2>RESPONSES:</h2>
+            <ul className="media-list">
+                <li className="media">
+                    <Comment 
+                        blogId={params.id}
+                        comments={comment}
+                        setComments={setComment}
+                        setIdReply={setIdRely}
+                    />
+                </li>
+            </ul>					
+        </div>
+
+        </>
     )
 }
 
