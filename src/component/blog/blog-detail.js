@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useLocation, useNavigate} from "react-router-dom";
 import API from "../../api";
 import Comment from "./comment";
+import Rate from "./rate";
 
 function BlogDetail(){
     let params = useParams();
@@ -53,13 +54,7 @@ function BlogDetail(){
         <div className="rating-area">
             <ul className="ratings">
                 <li className="rate-this">Rate this item:</li>
-                <li>
-                    <i className="fa fa-star color" />
-                    <i className="fa fa-star color" />
-                    <i className="fa fa-star color" />
-                    <i className="fa fa-star" />
-                    <i className="fa fa-star" />
-                </li>
+                <Rate blogId={params.id} />
                 <li className="color">(6 votes)</li>
             </ul>
             <ul className="tag">

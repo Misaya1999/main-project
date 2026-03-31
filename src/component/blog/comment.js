@@ -32,31 +32,39 @@ function Comment({ blogId, comments, setComments, setIdReply }) {
         const data = {
             id_blog: blogId,
             id_user: user.id,
-            id_comment: 0, 
-            comment: message
+            id_comment: 0,
+            comment: message,
+            name_user: user.name,
+            image_user: user.avatar
         }
 
         const token = localStorage.getItem("token")
 
-        API.post("blog/comment", data, {
+        API.post(`blog/comment/${blogId}`, {
+            id_blog: blogId,
+            id_user: user.id,
+            id_comment: 0,
+            comment: message,
+            name_user: user.name,
+            image_user: user.avatar
+        }, {
             headers: {
                 Authorization: "Bearer " + token
             }
         })
         .then(res => {
+            console.log("RESPONSE:", res.data)
 
             if(res.data.errors){
-                setError("Lỗi từ server")
+                setError(JSON.stringify(res.data.errors))
             } else {
-                //thêm comment mới vào list (không reload)
                 setComments(prev => [
                     ...prev,
                     {
-                        ...data,
+                        comment: message,
                         name: user.name
                     }
                 ])
-
                 setMessage("")
             }
         })
@@ -75,7 +83,7 @@ function Comment({ blogId, comments, setComments, setIdReply }) {
            <div className="replay-box">
                 <div className="row">
                     <div className="col-sm-12">
-                        <h2>Leave a reply</h2>
+                        <h2>Leave a reply</h2>  
                         <div className="text-area">
                             <div className="blank-arrow">
 
